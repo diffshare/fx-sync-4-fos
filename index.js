@@ -131,7 +131,8 @@ window.addEventListener("DOMContentLoaded", function() {
 
     function failSignin(error) {
       console.error(error);// DEBUG
-      utils.status.show("ERROR: " + error.message);
+      // error.message for Incorrect Password, error.error for Timeout Error.
+      utils.status.show("ERROR: " + (error.message || error.error));
 
       var signinForm = document.querySelector("#signin-form");
       Array.forEach(signinForm.querySelectorAll("input, button"), function(v) { v.disabled = false; });
@@ -187,7 +188,8 @@ window.addEventListener("DOMContentLoaded", function() {
 
     function failSignin(error) {
       console.error(error);// DEBUG
-      utils.status.show("ERROR: " + error.message);
+      // error.message for Incorrect Password, error.error for Timeout Error.
+      utils.status.show("ERROR: " + (error.message || error.error));
 
       Array.forEach(signinForm.querySelectorAll("input, button"), function(v) { v.disabled = false; });
       document.querySelector("#signin-progress").classList.add("hidden");
